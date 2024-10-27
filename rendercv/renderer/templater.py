@@ -443,14 +443,13 @@ def markdown_to_latex(markdown_string: str) -> str:
             markdown_string = markdown_string.replace(old_italic_text, new_italic_text)
 
     # convert code
-    # not supported by rendercv currently
-    # codes = re.findall(r"`([^`]*)`", markdown_string)
-    # if codes is not None:
-    #     for code_text in codes:
-    #         old_code_text = f"`{code_text}`"
-    #         new_code_text = "\\texttt{" + code_text + "}"
+    codes = re.findall(r"`([^`]*)`", markdown_string)
+    if codes is not None:
+        for code_text in codes:
+            old_code_text = f"`{code_text}`"
+            new_code_text = "\\texttt{" + code_text + "}"
 
-    #         markdown_string = markdown_string.replace(old_code_text, new_code_text)
+            markdown_string = markdown_string.replace(old_code_text, new_code_text)
 
     latex_string = markdown_string
 
